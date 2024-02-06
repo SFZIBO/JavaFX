@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="256.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.datasiswa.LoginController">
+    <stylesheets>
+        <URL value="@/styles/login.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="82.0" layoutY="25.0" text="LOGIN">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnlogin" layoutX="85.0" layoutY="259.0" mnemonicParsing="false" onAction="#btnLoginAction" prefHeight="25.0" prefWidth="86.0" text="Login" />
+      <PasswordField fx:id="txtPass" layoutX="55.0" layoutY="216.0" />
+      <Label contentDisplay="CENTER" layoutX="103.0" layoutY="192.0" text="Password" textAlignment="CENTER" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="101.0" layoutY="123.0" text="Username">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Label>
+      <TextField fx:id="txtUser" layoutX="54.0" layoutY="153.0" />
+   </children>
+</AnchorPane>
