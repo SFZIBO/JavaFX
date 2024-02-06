@@ -36,6 +36,6 @@
       </TableView>
       <Button fx:id="btnInsert" layoutX="14.0" layoutY="225.0" mnemonicParsing="false" onAction="#insertButton" onMouseClicked="#handleMouseAction" prefWidth="80.0" text="Insert" />
       <Button fx:id="btnDelete" layoutX="109.0" layoutY="225.0" mnemonicParsing="false" onAction="#deleteButton" prefWidth="80.0" text="Delete" />
-      <Button fx:id="btnUpdate" layoutX="206.0" layoutY="225.0" mnemonicParsing="false" onAction="#updateButton" prefHeight="25.0" prefWidth="80.0" text="Update" />
+      <Button fx:id="btnSave" layoutX="206.0" layoutY="225.0" mnemonicParsing="false" onAction="#saveButton" prefHeight="25.0" prefWidth="80.0" text="Save" />
    </children>
 </AnchorPane>

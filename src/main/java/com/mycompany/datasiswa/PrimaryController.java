@@ -64,7 +64,7 @@ public class PrimaryController {
     @FXML
     private Button btnDelete;
     @FXML
-    private Button btnUpdate;
+    private Button btnSave;
     
     public void siswa(String ID, int NIS, String Nama,String Kelas){
         
@@ -96,11 +96,15 @@ public class PrimaryController {
         
         //Menghubungkan data ke tabel
         tvSiswa.setItems(data);
+        //load Data
+        loadDataFromFile();
     }
     
     
     @FXML
     public void insertButton(ActionEvent event){
+        showDataSiswa();
+        
         String ID = tfID.getText();
         int NIS = Integer.parseInt(tfNIS.getText());
         String Nama = tfNama.getText();
@@ -116,6 +120,49 @@ public class PrimaryController {
         Kelas = tfKelas.getText();
     }
     
+    @FXML
+    public void deleteButton(ActionEvent event){
+     // Dapatkan item terpilih dari tabel
+    DataSiswa selectedSiswa = tvSiswa.getSelectionModel().getSelectedItem();
+
+    // Periksa apakah ada item terpilih sebelum menghapus
+    if (selectedSiswa != null) {
+        // Hapus item dari ObservableList
+        data.remove(selectedSiswa);
+    } else {
+        // Tampilkan pesan atau berikan umpan balik bahwa tidak ada item terpilih
+        System.out.println("Tidak ada data terpilih untuk dihapus.");
+    }
+    }
+    
+    
+    @FXML
+    public void saveButton(ActionEvent event){
+        saveDataToFile();
+    }
+    
+    
+        // Metode untuk menyimpan data ke dalam file
+    public void saveDataToFile() {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("data.dat"))) {
+            out.writeObject(new ArrayList<>(data));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+        // Metode untuk membaca data dari file
+    public void loadDataFromFile() {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("data.dat"))) {
+            List<DataSiswa> savedData = (List<DataSiswa>) in.readObject();
+            data.setAll(savedData);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+        
+        
+        
     /*
     @FXML
     public void insertButton(ActionEvent event){
@@ -136,16 +183,9 @@ public class PrimaryController {
             ex.printStackTrace();
     }}
         */
-    @FXML
-    public void deleteButton(ActionEvent event){
-        readData();
-    }
-    @FXML
-    public void updateButton(ActionEvent event){
-        
-    }
 
-    
+
+    /*
     public Connection getConnection(){
         Connection conn;
         try{
